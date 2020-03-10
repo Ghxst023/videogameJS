@@ -11,7 +11,6 @@ const routes: Routes = [
     {path: 'home', component: HomeComponent },
     {path: 'register', component: RegisterComponent },
     {path: 'my-nav', component: MyNavComponent },
-    {path: 'notfound', component: NotfoundComponent },
     {path: '**', component: NotfoundComponent },
 ];
 
