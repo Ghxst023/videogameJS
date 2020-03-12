@@ -14,14 +14,16 @@ html {
 	padding: 0;
 }
 
-body {
+::ng-deep body {
 	position: relative;
 	height: 100%;
 	min-width: 1054px;
 	margin:0;
 	padding:0;
 	background-color: rgb(217, 223, 240);
-	-webkit-user-drag: none;
+    -webkit-user-drag: none;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 img {
@@ -30,13 +32,14 @@ img {
 }
 
 label {
-	position: relative;
+	// position: relative;;
 	font-family: 'Press Start 2P', cursive;
-	text-transform: uppercase;
+    text-transform: uppercase;
+    text-align: center;
 	font-size:4em;
 	color:white;
-	top:420px;
-	left:115px;
+	// top:200px;
+	// left:115px;
 	text-shadow:0px 4px 5px rgba(0,0,0,0.75), 0px 0px 2px rgba(0,0,0,1);
 	opacity:0;
 	
@@ -55,15 +58,6 @@ label {
 	padding-bottom:60px;
 	padding-top:10px;
 }
-
-.centeredContent {
-	position:relative;
-	width:1054px;
-	height:auto;
-	margin-left:auto;
-	margin-right:auto;
-}
-
 
 /*---------- Animation ----------*/
 @-webkit-keyframes fadeInTranslateY {
@@ -131,10 +125,13 @@ label {
 }
 
 .map {
-	position:relative;
-	width:800px;
-	height:800px;
-	margin-left:auto;
-	margin-right:auto;
-	background:url('https://joeybergeron.com/_/404/img/Hyrule.jpg');
+
+    background:url('https://joeybergeron.com/_/404/img/Hyrule.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }

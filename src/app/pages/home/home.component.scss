@@ -1,10 +1,4 @@
 
-::ng-deep body {
-	background-color: #333642 !important;
-	height: 100%;
-	margin: 0 auto;
-}
-
 .navi {
 	position: absolute;
 	height: 300px;
@@ -133,3 +127,18 @@
 	50% {transform: rotate(-30deg);}
 	100% {transform: rotate(-15deg);}
 }
+
+/*---------- Gamer Font ----------*/
+    .font{
+	font-family: 'Press Start 2P', cursive;
+	text-transform: uppercase;
+}
+
+    .fontCustom{
+    font-family: 'Press Start 2P', cursive;
+	font-size:1em;
+    }
+
+    .font2{
+        font-family: 'Orbitron', sans-serif;
+    }
