@@ -2,42 +2,195 @@
 <app-my-nav></app-my-nav>
 
 <!-- Code starts here -->
-<form action="" style="margin-top: 15px;">
+<form [formGroup]="myForm" (ngSubmit)='onSubmit()'>
+    Value: {{myForm.value | json}}
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <mat-card>
+                <mat-card style="margin-top: 5em;">
                     <mat-card-content>
                         <div class="container">
+                            <!-- #region personalInfo -->
                             <div class="row">
                                 <div class="col-12 text-center">
                                     <mat-card-title>
-                                        {{cardTitle}}
+                                        {{personalInfo}}
                                     </mat-card-title>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                     <mat-form-field class="fWidth">
-                                        <mat-label>Name</mat-label>
-                                        <input matInput value="" type="text">
+                                        <mat-label>Name(s)</mat-label>
+                                        <input matInput value="" type="text" formControlName="name" (keypress)="validators.textOnly($event)">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                     <mat-form-field class="fWidth">
                                         <mat-label>Middle name</mat-label>
-                                        <input matInput value="" type="text">
+                                        <input matInput value="" type="text" formControlName="middleName" (keypress)="validators.textOnly($event)">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                     <mat-form-field class="fWidth">
                                         <mat-label>Last name</mat-label>
-                                        <input matInput value="" type="text">
+                                        <input matInput value="" type="text" formControlName="lastName" (keypress)="validators.textOnly($event)">
                                     </mat-form-field>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                    <mat-form-field>
+                                        <mat-label>Birth date</mat-label>
+                                        <input matInput [matDatepicker]="picker">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4" style="margin-top: 1.5em;">
+                                    <label style="font-size: medium;">Gender</label>
+                                    <mat-radio-group aria-label="Select an option" style="margin-left: 1em;">
+                                        <mat-radio-button value="1">Male</mat-radio-button>
+                                        <mat-radio-button value="2">Female</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                    <mat-form-field class="fWidth">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput value="" type="email" formControlName="email">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                    <mat-form-field class="fWidth">
+                                        <mat-label>Phone contact</mat-label>
+                                        <input matInput value="" type="text" formControlName="phoneContact" (keypress)="validators.numberOnly($event)">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- #endregion -->
+
+                            <!-- #region address -->
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <mat-card-title>
+                                        {{address}}
+                                    </mat-card-title>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                    <div>
+                                        <mat-form-field class="fWidth">
+                                            <mat-label>City</mat-label>
+                                            <input matInput value="" type="text" formControlName="city" (keypress)="validators.textOnly($event)">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                    <div>
+                                        <mat-form-field class="fWidth">
+                                            <mat-label>Country</mat-label>
+                                            <input matInput value="" type="text" formControlName="country" (keypress)="validators.textOnly($event)">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                    <div>
+                                        <mat-form-field class="fWidth">
+                                            <mat-label>State</mat-label>
+                                            <input matInput value="" type="text" formControlName="state" (keypress)="validators.textOnly($event)">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                    <div>
+                                        <mat-form-field class="fWidth">
+                                            <mat-label>Street address line 1</mat-label>
+                                            <input matInput value="" type="text" formControlName="streetLine1" (keypress)="validators.textOnly($event)">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                    <div>
+                                        <mat-form-field class="fWidth">
+                                            <mat-label>Street address line 2 (optional)</mat-label>
+                                            <input matInput value="" type="text" (keypress)="validators.textOnly($event)">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                    <div>
+                                        <mat-form-field class="fWidth">
+                                            <mat-label>Department number</mat-label>
+                                            <input matInput value="" type="text" formControlName="departmentNumber" (keypress)="validators.numberOnly($event)">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- #endregion -->
+
+                            <!-- #region consoleInformation -->
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <mat-card-title>
+                                        {{console}}
+                                    </mat-card-title>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                                    <mat-form-field class="fWidth">
+                                        <mat-label>Select your favorite fabricant</mat-label>
+                                        <input matInput value="" type="text" formControlName="fabricant">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                                    <mat-form-field class="fWidth">
+                                        <mat-label>Type your favorite console</mat-label>
+                                        <input matInput value="" type="text" formControlName="favoriteConsole">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                                    <mat-form-field class="fWidth">
+                                        <mat-label>Type your favorite videogame</mat-label>
+                                        <input matInput value="" type="text" formControlName="favoriteVideogame" (keypress)="validators.textOnly($event)">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4" style="margin-top: 1em;">
+                                    <mat-slide-toggle (click)=toggleDisplay()>Switch this if you have a console</mat-slide-toggle>
+                                </div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                                    <mat-form-field style="width: 20em;" *ngIf='!isShow'>
+                                        <mat-label>Type what console(s) do you have</mat-label>
+                                        <input matInput value="" type="text" (keypress)="validators.textOnly($event)">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- #endregion -->
                         </div>
                     </mat-card-content>
+                    <!-- #region Confirm registry -->
+                    <div class="row">
+                        <div class="col-12 col-sm-4 col-md-4 col-lg-12" style="text-align: center;">
+                            <mat-card-actions>
+                                <mat-checkbox formControlName="agree">It's everything correct?</mat-checkbox>
+                                <br>
+                                <br>
+                                <button mat-raised-button color="warn">Clean</button>
+                                <button mat-raised-button color="primary" [disabled]="myForm.invalid" type="submit">Register</button>
+                            </mat-card-actions>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
                 </mat-card>
             </div>
         </div>
